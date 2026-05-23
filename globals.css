@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #fff6f8, #f3e1e6 45%);
+  color: #3d2b2f;
+  font-family: "Montserrat", sans-serif;
+}
