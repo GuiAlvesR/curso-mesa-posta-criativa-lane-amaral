@@ -1,191 +1,298 @@
 @import "./globals.css";
 
-/* TOPO FIXO */
-
 .top-bar {
   width: 100%;
-  background: #e1c284;
-  color: #4d3a24;
+  background: linear-gradient(90deg, #f3d9a1, var(--gold));
+  color: var(--text);
   text-align: center;
   padding: 14px;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 1px;
+  position: sticky;
+  top: 0;
   z-index: 999;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* CONTAINER */
+.hero {
+  width: 100%;
+  padding: 40px 20px 100px;
+}
 
-.container {
-  max-width: 950px;
-  margin: auto;
-  padding: 80px 20px 70px;
+.hero-content {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.hero-text {
   text-align: center;
+  margin-bottom: 50px;
 }
 
-/* VIDEO RETRATO */
+.hero-badge {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(225, 194, 132, 0.18);
+  color: var(--gold-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 25px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.subtitle {
+  max-width: 700px;
+  margin-inline: auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-soft);
+}
 
 .video-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .video-box {
   position: relative;
   width: 100%;
   max-width: 420px;
-  border-radius: 30px;
+  border-radius: 36px;
   overflow: hidden;
-  background: #fff;
-  border: 3px solid #e1c284;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  background: black;
+  border: 3px solid rgba(225, 194, 132, 0.4);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.18),
+    0 0 45px rgba(225, 194, 132, 0.12);
 }
-
-/* VIDEO */
 
 .offer-video {
   width: 100%;
-  height: 740px;
+  height: 760px;
   object-fit: cover;
   display: block;
-  background: black;
 }
 
 .progress-container {
   position: absolute;
-  bottom: 14px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   width: 88%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 30px;
+  height: 7px;
+  border-radius: 999px;
   overflow: hidden;
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
 }
 
 .progress-bar {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #fff5d7, #e1c284, #b68d40);
-  border-radius: 30px;
-  box-shadow: 0 0 12px rgba(225, 194, 132, 0.7);
+  border-radius: inherit;
+  background: linear-gradient(90deg, #fff5d7, var(--gold), var(--gold-dark));
 }
 
-.price {
-  margin-top: 10px;
+.offer-section {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.offer-locked {
+  padding: 35px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(225, 194, 132, 0.25);
+  text-align: center;
+  transition: 0.5s ease;
+}
+
+.offer-mini-badge {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(225, 194, 132, 0.18);
+  color: var(--gold-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.offer-locked h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.offer-locked p {
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.offer-loading {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(225, 194, 132, 0.15);
+}
+
+.offer-loading-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #fff5d7, var(--gold), var(--gold-dark));
+  transition: width 0.3s linear;
+}
+
+.offer-unlocked {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: 0.5s ease;
+}
+
+.offer-unlocked.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.offer-locked.hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  position: absolute;
 }
 
 .old-price {
+  display: block;
+  color: #967d82;
   text-decoration: line-through;
-  color: #9b7f86;
-  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
 .new-price {
-  font-size: 4rem;
-  color: #b68d40;
-  font-weight: bold;
-  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
   margin-bottom: 15px;
+  color: var(--gold-dark);
 }
 
 .coupon {
-  background: #fff7e8;
-  color: #8b6a2f;
-  border: 2px dashed #e1c284;
   display: inline-block;
   padding: 12px 22px;
-  border-radius: 14px;
+  border-radius: 16px;
+  border: 2px dashed rgba(225, 194, 132, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   margin-bottom: 35px;
-  font-weight: 600;
 }
 
 .buy-btn {
-  display: inline-block;
-  background: #e1c284;
-  color: #4d3a24;
-  text-decoration: none;
-  padding: 20px 45px;
-  border-radius: 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: 0.3s ease;
-  box-shadow: 0 8px 25px rgba(225, 194, 132, 0.4);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: min(100%, 420px);
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f0d59c, #d8b16a);
+  color: var(--text);
+  font-weight: 800;
   letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.35s ease;
+  box-shadow: 0 15px 35px rgba(225, 194, 132, 0.35);
 }
 
 .buy-btn:hover {
-  transform: translateY(-4px);
-  background: #d6b36e;
+  transform: translateY(-5px) scale(1.01);
 }
-
-/* MÓDULOS */
 
 .modules {
-  margin-top: 90px;
+  max-width: 1150px;
+  margin: 120px auto 0;
 }
 
-.modules-title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 3rem;
-  color: #4d3a24;
-  margin-bottom: 40px;
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-.module-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(225, 194, 132, 0.4);
-  border-radius: 24px;
-  padding: 28px;
-  margin-bottom: 24px;
-  text-align: left;
-  transition: 0.4s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.module-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-}
-
-.module-card span {
-  color: #b68d40;
-  font-size: 0.9rem;
+.section-header span {
+  color: var(--gold-dark);
+  font-size: 0.85rem;
   letter-spacing: 2px;
-  text-transform: uppercase;
   font-weight: 700;
 }
 
+.section-header h2 {
+  margin-top: 18px;
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.module-card {
+  padding: 32px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(225, 194, 132, 0.3);
+  transition: 0.35s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-6px);
+}
+
+.module-card span {
+  color: var(--gold-dark);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
 .module-card h3 {
-  margin-top: 12px;
-  margin-bottom: 15px;
-  font-size: 1.7rem;
-  color: #4d3a24;
-  font-family: "Cormorant Garamond", serif;
+  margin: 18px 0 14px;
+  font-size: 1.5rem;
 }
 
 .module-card p {
-  color: #6d555b;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: var(--text-soft);
 }
-
-/* OVERLAY PREMIUM */
 
 .pause-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(20, 16, 10, 0.55);
-  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   pointer-events: none;
   transition: 0.35s ease;
+  backdrop-filter: blur(8px);
+  background: rgba(20, 16, 10, 0.55);
 }
 
 .pause-overlay.active {
@@ -196,128 +303,62 @@
 .pause-content {
   width: 88%;
   max-width: 340px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(225, 194, 132, 0.35);
-  border-radius: 30px;
   padding: 35px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.92);
   text-align: center;
-  transform: translateY(20px);
-  transition: 0.35s ease;
-  box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.15),
-    0 0 30px rgba(225, 194, 132, 0.12);
-}
-
-.pause-overlay.active .pause-content {
-  transform: translateY(0);
 }
 
 .pause-content h2 {
-  color: #4d3a24;
-  font-size: 2.1rem;
-  margin-bottom: 16px;
-  font-family: "Cormorant Garamond", serif;
+  margin-bottom: 15px;
 }
 
 .pause-content p {
-  color: #6d555b;
   line-height: 1.7;
-  margin-bottom: 28px;
+  margin-bottom: 25px;
 }
 
 .pause-content button {
   width: 100%;
-  border: none;
-  background: linear-gradient(135deg, #f0d59c, #d8b16a);
-  color: #4d3a24;
   padding: 18px;
+  border: none;
   border-radius: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  background: linear-gradient(135deg, #f0d59c, #d8b16a);
+  font-weight: 800;
   cursor: pointer;
-  transition: 0.3s ease;
-  box-shadow: 0 10px 25px rgba(225, 194, 132, 0.35);
-}
-
-.pause-content button:hover {
-  transform: translateY(-3px);
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.video-box {
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.15),
-    0 0 35px rgba(225, 194, 132, 0.15);
-}
-
-/* EFEITO BOTÃO */
-
-.buy-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.buy-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.5),
-    transparent
-  );
-
-  transition: 0.8s;
-}
-
-.buy-btn:hover::before {
-  left: 120%;
-}
-
-/* RESPONSIVO */
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.8rem;
-  }
-
-  .new-price {
-    font-size: 3rem;
-  }
-
-  .benefits h2 {
-    font-size: 2.2rem;
-  }
-
-  .buy-btn {
-    width: 100%;
-  }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 25px 16px 80px;
+  }
+
   .offer-video {
-    height: 620px;
+    height: 70vh;
+    min-height: 520px;
+    max-height: 760px;
+  }
+
+  .modules {
+    margin-top: 90px;
   }
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
   .offer-video {
-    height: 520px;
+    height: 78vh;
+    min-height: 500px;
+  }
+
+  .module-card {
+    padding: 24px;
   }
 }

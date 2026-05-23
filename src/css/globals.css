@@ -6,8 +6,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  --gold: #e1c284;
+  --gold-dark: #b68d40;
+
+  --bg: #f3e1e6;
+
+  --text: #4d3a24;
+  --text-soft: #6d555b;
+
+  --white: #ffffff;
+}
+
 body {
-  background: radial-gradient(circle at top, #fff6f8, #f3e1e6 45%);
-  color: #3d2b2f;
+  background: radial-gradient(circle at top, #fff8fa, var(--bg));
+  color: var(--text);
   font-family: "Montserrat", sans-serif;
 }

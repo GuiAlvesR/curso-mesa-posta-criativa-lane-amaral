@@ -10,29 +10,26 @@ function atualizarBarra() {
 
   if (!duracao) return;
 
+  const progressoReal = tempoAtual / duracao;
   let progressoVisual;
 
-  if (tempoAtual <= 60) {
-    progressoVisual = (tempoAtual / duracao) * 42;
+  if (progressoReal <= 0.5) {
+    progressoVisual = progressoReal * 156;
   } else {
 
-    const restanteVideo = duracao - 60;
-    const restanteAssistido = tempoAtual - 60;
+    const metadeFinal = (progressoReal - 0.5) / 0.5;
+    const curva = Math.pow(metadeFinal, 2.2);
 
-    const curva = 1 - Math.exp(-3 * (restanteAssistido / restanteVideo));
-
-    progressoVisual = 42 + curva * 58;
+    progressoVisual = 78 + curva * 22;
   }
 
   progressoVisual = Math.min(progressoVisual, 100);
-
   progressBar.style.width = progressoVisual + "%";
 }
 
 video.addEventListener("timeupdate", atualizarBarra);
 
 video.addEventListener("pause", () => {
-
   if (video.currentTime < video.duration - 0.5) {
     pauseOverlay.classList.add("active");
   }
@@ -51,5 +48,27 @@ video.addEventListener("click", () => {
     video.play();
   } else {
     video.pause();
+  }
+});
+
+const offerLocked = document.getElementById("offerLocked");
+const offerUnlocked = document.getElementById("offerUnlocked");
+const loadingBar = document.querySelector(".offer-loading-bar");
+
+const tempoLiberacao = 300;
+
+video.addEventListener("timeupdate", () => {
+  if (!video.duration) return;
+
+  const progresso = Math.min((video.currentTime / tempoLiberacao) * 100, 100);
+
+  loadingBar.style.width = progresso + "%";
+
+  if (video.currentTime >= tempoLiberacao) {
+    offerLocked.classList.add("hide");
+
+    setTimeout(() => {
+      offerUnlocked.classList.add("active");
+    }, 250);
   }
 });
