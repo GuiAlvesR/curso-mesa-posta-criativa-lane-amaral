@@ -16,7 +16,6 @@ function atualizarBarra() {
   if (progressoReal <= 0.5) {
     progressoVisual = progressoReal * 156;
   } else {
-
     const metadeFinal = (progressoReal - 0.5) / 0.5;
     const curva = Math.pow(metadeFinal, 2.2);
 
@@ -71,4 +70,9 @@ video.addEventListener("timeupdate", () => {
       offerUnlocked.classList.add("active");
     }, 250);
   }
+});
+
+unlockBtn.addEventListener("click", () => {
+  offerLocked.classList.add("hide");
+  offerUnlocked.classList.add("active");
 });
